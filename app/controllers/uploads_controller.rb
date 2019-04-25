@@ -4,7 +4,7 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
+    @uploads = Upload.last_published
   end
 
   # GET /uploads/1

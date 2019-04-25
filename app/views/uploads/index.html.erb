@@ -15,6 +15,7 @@
              <div class="pd-3 ">
                <h3><%= upload.title %></h3>
                <p><%= upload.description %></p>
+               <p><%= upload.created_at.strftime("%b %d, %Y") %></p>
                <h4><%= upload.is_public %></h4>
                <h4><%= upload.user %></h4>
              </div>
