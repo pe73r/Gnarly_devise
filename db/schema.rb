@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_123052) do
+ActiveRecord::Schema.define(version: 2019_04_24_150707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "uploads", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.boolean "is_public"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "photoupload"
+    t.index ["user_id"], name: "index_uploads_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,4 +39,5 @@ ActiveRecord::Schema.define(version: 2019_04_17_123052) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "uploads", "users"
 end
