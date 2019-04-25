@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
-    p params
     @user.name = params[:name]
     @user.country = params[:country]
     @user.save
@@ -18,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:title, :body, :photo, :country)
+    params.require(:user).permit(:title, :body, :photo, :country, :name, :last_name)
   end
 end
+
