@@ -1,13 +1,14 @@
-<div class="col-md-4 offset-md-4 bg-white rounded mt-5 p-5">
+<div class="row">
+<div class="col-md-6 bg-white rounded mt-5 p-5">
 
 <h2>This is upload show</h2>
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @upload.title %>
-</p>
-
+     <div class="">
+        <img src="<%= @upload.photoupload %>" alt="<%= @upload.title %>" class="upload_img">
+    </div>
+</div>
+<div class="col-md-6 bg-white rounded mt-5 p-5">
+<h2><%= @upload.title %></h2>
+<p>Published by <strong><%= @upload.user.name %></strong><strong><%= @upload.user.last_name %> </strong> <%= time_ago_in_words(@upload.created_at) %></p>
 <p>
   <strong>Description:</strong>
   <%= @upload.description %>
@@ -22,11 +23,13 @@
   <strong>User:</strong>
   <%= @upload.user %>
 </p>
-<div class="">
-    <img src="<%= @upload.photoupload %>" alt="<%= @upload.title %>" class="upload_img">
-</div>
+<p>
+  <strong>Tags</strong>
+  <%= render @upload.tags %>
+</p>
 
 
 <%= link_to 'Edit', edit_upload_path(@upload) %> |
 <%= link_to 'Back', uploads_path %>
+</div>
 </div>

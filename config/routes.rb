@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :uploads
+  resources :tags, only: [:show]
   devise_for :users
   root to: 'pages#home'
   get 'dashboard' => 'pages#dashboard'

@@ -4,7 +4,7 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
+    @uploads = Upload.last_published
   end
 
   # GET /uploads/1
@@ -69,6 +69,6 @@ class UploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_params
-      params.require(:upload).permit(:title, :description, :is_public, :photoupload)
+      params.require(:upload).permit(:title, :description, :is_public, :photoupload, :tag_list)
     end
 end
