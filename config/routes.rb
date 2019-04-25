@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :uploads
   resources :tags, only: [:show]
   devise_for :users
