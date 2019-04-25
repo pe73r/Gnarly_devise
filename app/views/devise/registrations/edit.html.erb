@@ -23,6 +23,8 @@
                 required: false,
                 input_html: { autocomplete: "current-password" } %>
 
+    <%= f.select :country, Country::COUNTRY_LIST, {prompt: 'Select a country'}, class: "form-control input-lg" %>
+
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
      </div>
