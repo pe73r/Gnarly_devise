@@ -1,12 +1,14 @@
-<div class="row">
-<div class="col-md-6 bg-white rounded mt-5 p-5">
-
-<h2>This is upload show</h2>
+<div class="row m-5">
+<div class="col-md-6 bg-white rounded p-5">
      <div class="">
         <img src="<%= @upload.photoupload %>" alt="<%= @upload.title %>" class="upload_img">
     </div>
+    <div class="mt-2">
+      <button class="btn btn-primary btn-text-blanco"> <%= link_to 'Back to events', uploads_path %></button>
+    </div>
 </div>
-<div class="col-md-6 bg-white rounded mt-5 p-5">
+
+<div class="col-md-6 bg-white rounded  p-5">
 <h2><%= @upload.title %></h2>
 <p>Published by <strong><%= @upload.user.name %></strong><strong><%= @upload.user.last_name %> </strong> <%= time_ago_in_words(@upload.created_at) %></p>
 <p>
@@ -14,22 +16,48 @@
   <%= @upload.description %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Is public:</strong>
   <%= @upload.is_public %>
 </p>
-
-<p>
+ -->
+<!-- <p>
   <strong>User:</strong>
   <%= @upload.user %>
-</p>
-<p>
-  <strong>Tags</strong>
+</p> -->
+
   <%= render @upload.tags %>
-</p>
+
+<br>
+<br>
+
+<% @upload.comments.count %>
+<%= render 'comments/form' %>
+
+<div style="margin-top: 50px;">
+        <% @upload.comments.last_published.each do |comment| %>
+          <div class="thumbnail pd-3 mb-5 ">
+            <div class="row">
+              <div class="col-md-2">
+                <img src="<%=comment.upload.user.photo %>" class="avatar dropdown-toggle" id ="navbarDropdown" data-toggle="dropdown"/>
+              </div>
+
+              <div class="col-md-10">
+                <div class="d-flex justify-content-between">
+                   <h6 class="">Comment by <strong><%=comment.upload.user.name %></strong></h6>
+                    <%= @upload.id %>
+                    <%= comment.id %>
+                    <%= link_to 'Delete comment', comment_path(comment),   method: :delete, data: { confirm: 'Are you sure?' }, class: "badge badge-secondary "%>
+                </div>
+
+                <%= raw comment.body %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
 
-<%= link_to 'Edit', edit_upload_path(@upload) %> |
-<%= link_to 'Back', uploads_path %>
 </div>
 </div>
+

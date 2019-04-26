@@ -1,0 +1,23 @@
+<%= form_with(model: [@upload, @comment], local: true) do |form| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <h5>Any comments?</h5>
+  <div class="form-group">
+    <%= form.text_area :body, class: "form-control input-lg", ckeditor: { uiColor: '#F1F6F7', toolbar: 'mini' } %>
+  </div>
+
+  <div class="form-group">
+    <button class="btn-sign_up">
+    <%= form.submit "Post a comment", class: "btn btn-flux btn-lg" %>
+    </button>
+  </div>
+<% end %>

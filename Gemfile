@@ -8,6 +8,9 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'paperclip'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'figaro'
 
 
 # default le wagon gems

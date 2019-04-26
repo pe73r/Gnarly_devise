@@ -9,8 +9,22 @@ class UploadsController < ApplicationController
 
   # GET /uploads/1
   # GET /uploads/1.json
-  def show
-  end
+  # def show
+  #   @uploads = Upload.last_published
+  #   @comment = Comment.new
+  #   @comments = Comment.all
+  # end
+
+   def show
+    if user_signed_in? || @upload.is_public
+
+    else
+      redirect_to new_user_session_path, notice: "You should start session"
+    end
+    @uploads = Upload.last_published
+    @comment = Comment.new
+    @comments = Comment.all
+   end
 
   # GET /uploads/new
   def new
