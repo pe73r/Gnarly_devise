@@ -2,11 +2,6 @@
 
 <div class="col-md-4 offset-md-4 bg-white rounded mt-5 p-5">
 
-<div class="btn_sign_up" id="btn_sign_up_facebook">
-         <%= image_tag '', class: "img_signin" %>
-          <%= link_to "Continuer avec Facebook", omniauth_authorize_path(:user, :facebook), class: "h3_facebook"%>
-        </div>
-
   <h2>Sign up</h2>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -32,11 +27,7 @@
   <%= render "devise/shared/links" %>
 
   <div class="facebook-button">
- <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign up with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end %>
-<% end %>
-</div>
+    <%= link_to "Continuer avec Facebook", omniauth_authorize_path(:user, :facebook), class: "h3_facebook"%>
+  </div>
 
 </div>
